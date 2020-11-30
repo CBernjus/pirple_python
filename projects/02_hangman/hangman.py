@@ -68,9 +68,9 @@ def playGame(word):
         printWord(word, revealed)
         printGallowsAndErrors(wrongChars)
         if len(wrongChars) >= max_errors:
-            return endGame(False)
+            return endGame(False, word)
         elif all(r for r in revealed):
-            return endGame(True)
+            return endGame(True, word)
         char = ""
         while True:
             char = input("\nPick a character: ").upper()
@@ -103,13 +103,14 @@ def startGame():
     chooseOption()
 
 
-def endGame(won):
+def endGame(won, word):
     print()
     if won:
         print("You saved the victim! \\(^^)/")
         print("New game (Y/N)?")
     else:
         print("You were too slow! T.T")
+        print("The word was: " + word)
         print("Wanna try again (Y/N)?")
     if input().upper() == "Y":
         clearScreen()
