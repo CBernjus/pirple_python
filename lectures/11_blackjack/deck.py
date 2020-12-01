@@ -40,5 +40,11 @@ class Deck:
             output.append(str(card))
         return ' '.join(output)
 
+    def __repr__(self):
+        return str(self)
+
+    def __len__(self):
+        return len(self.cards)
+
     def random(self):
         shuffle(self.cards)
