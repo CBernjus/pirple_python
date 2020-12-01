@@ -1,8 +1,16 @@
 from deck import Deck
 from player import Player
+import os
 
 
-def printLogo():
+def clear_screen():
+    if os.name == 'nt':
+        os.system("cls")
+    else:
+        os.system('clear')
+
+
+def print_logo():
     print("""  _                     _           _            _    
  | |    ___  _ __   ___| |_   _    | | __ _  ___| | __
  | |   / _ \\| '_ \\ / _ \\ | | | |_  | |/ _` |/ __| |/ /
