@@ -52,14 +52,16 @@ class Player:
 
     def draw(self):
         self.money += self.current_bet
-        self.current_bet = 0
+        self.current_bet = 0.0
 
     def win(self):
+        profit = 0
         if self.has_blackjack():
-            self.money = 2.5 * self.current_bet
+            profit = 2.5 * self.current_bet
         else:
-            self.money = 2 * self.current_bet
-        self.current_bet = 0
+            profit = 2 * self.current_bet
+        self.money = profit
+        self.current_bet = 0.0
 
     def lose(self):
-        self.current_bet = 0
+        self.current_bet = 0.0
