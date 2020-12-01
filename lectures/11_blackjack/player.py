@@ -50,10 +50,16 @@ class Player:
         self.money -= amount
         self.current_bet += amount
 
-    def win(self, result):
-        if result:
-            if self.has_blackjack():
-                self.money = 2.5 * self.current_bet
-            else:
-                self.money = 2 * self.current_bet
+    def draw(self):
+        self.money += self.current_bet
+        self.current_bet = 0
+
+    def win(self):
+        if self.has_blackjack():
+            self.money = 2.5 * self.current_bet
+        else:
+            self.money = 2 * self.current_bet
+        self.current_bet = 0
+
+    def lose(self):
         self.current_bet = 0
