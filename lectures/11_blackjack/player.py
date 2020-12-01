@@ -10,7 +10,7 @@ class Player:
         self.current_bet = 0.0
 
     def __str__(self):
-        return ' '.join([str(card) for card in self.hand]) + ', score: ' + str(self.score)
+        return ' '.join([str(card) for card in self.hand]) + '\n- score: ' + str(self.score) + '\n- money: ' + str(self.money) + '\n- bet: ' + str(self.current_bet)
 
     def set_score(self):
         score = 0
@@ -19,9 +19,9 @@ class Player:
             score += card.value
             if card.face == "A":
                 aces += 1
-            if score > 21:
-                score -= 10
-                aces -= 1
+                if score > 21:
+                    score -= 10
+                    aces -= 1
         return score
 
     def has_blackjack(self):
@@ -51,6 +51,7 @@ class Player:
         self.current_bet += amount
 
     def draw(self):
+        print("\nIt's a draw! You get " + str(self.current_bet) + " back")
         self.money += self.current_bet
         self.current_bet = 0.0
 
@@ -61,7 +62,9 @@ class Player:
         else:
             profit = 2 * self.current_bet
         self.money = profit
+        print("\nYou win " + str(profit))
         self.current_bet = 0.0
 
     def lose(self):
+        print("\nYou lost " + str(self.current_bet))
         self.current_bet = 0.0
