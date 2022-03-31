@@ -45,6 +45,8 @@ def drawField(field):
                     print("|", end="\n" if col == 14 else "")
         else:
             print("-" * (Width * 4 + 1))
+    for col in range(Width):
+        print(f"  {col + 1} ", end="\n" if col == Width-1 else "")
 
 
 def initField():
@@ -111,8 +113,9 @@ def nextTurn(field, player):
     print(player, "'s turn")
     colIndex = 0
     while True:
-        colIndex = input("Choose Column: ")
-        if colIndex.isnumeric() and checkCol(field, int(colIndex)):
+        userInput = input("Choose Column: ")
+        if userInput.isnumeric() and checkCol(field, int(userInput) - 1):
+            colIndex = int(userInput) - 1
             break
     field = placeCoin(field, int(colIndex), player)
 
